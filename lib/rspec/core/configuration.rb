@@ -1759,7 +1759,7 @@ module RSpec
         files = FlatMap.flat_map(paths_to_check(paths)) do |path|
           path = path.gsub(File::ALT_SEPARATOR, File::SEPARATOR) if File::ALT_SEPARATOR
           File.directory?(path) ? gather_directories(path) : extract_location(path)
-        end.sort.uniq
+        end.uniq
 
         return files unless only_failures?
         relative_files = files.map { |f| Metadata.relative_path(File.expand_path f) }
